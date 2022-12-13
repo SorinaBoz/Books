@@ -1,18 +1,18 @@
 package ro.digitalnation.Books.Repository;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 @Entity
-@Table(name = "ScienceBooks")
+@SecondaryTable(name = "ScienceBooks")
 public class ScienceBook extends Book {
 
     private String field;
 
     protected ScienceBook(){}
-    public ScienceBook(String isbn, String title, String subtitle, String author, String publisher, LocalDate published, int pages, boolean isAvailable, boolean canBeBorrowed, String field) {
-        super(isbn, title, subtitle, author, publisher, published, pages, isAvailable, canBeBorrowed);
+
+    public ScienceBook(String isbn, String title, String field) {
+        super(isbn, title);
         this.field = field;
     }
 

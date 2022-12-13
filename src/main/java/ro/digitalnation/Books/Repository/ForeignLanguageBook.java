@@ -1,17 +1,19 @@
 package ro.digitalnation.Books.Repository;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "Foreign Language Book")
+@SecondaryTable(name = "Foreign Language Book")
 public class ForeignLanguageBook extends Book {
  private String language;
 
-    public ForeignLanguageBook(String isbn, String title, String subtitle, String author, String publisher, LocalDate published, int pages, boolean isAvailable, boolean canBeBorrowed, String language) {
-        super(isbn, title, subtitle, author, publisher, published, pages, isAvailable, canBeBorrowed);
+    protected ForeignLanguageBook() {
+    }
+
+    public ForeignLanguageBook(String isbn, String title, String language) {
+        super(isbn, title);
         this.language = language;
     }
 

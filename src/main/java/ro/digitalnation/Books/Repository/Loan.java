@@ -1,8 +1,6 @@
 package ro.digitalnation.Books.Repository;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.util.Date;
 
@@ -11,10 +9,17 @@ import java.util.Date;
 public class Loan {
 @Id
 private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "user", nullable = false)
     private User user;
+    @ManyToOne
+    @JoinColumn(name = "book", nullable = false)
     private Book book;
     private Date loanDate;
     private Date returnDate;
+
+    protected Loan(){}
 
     public Loan(Long id, User user, Book book, Date loanDate, Date returnDate) {
         this.id = id;
